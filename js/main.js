@@ -55,18 +55,22 @@ class HeaderComponent extends HTMLElement {
   
   customElements.define('footer-component', FooterComponent);
 
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
     const currentPage = window.location.pathname.split("/").pop();
 
     const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
   
     navLinks.forEach(function(navLink) {
-      const linkHref = navLink.getAttribute("href").split("/").pop(); 
+        let linkHref = navLink.getAttribute("href").split("/").pop(); 
+        if (!linkHref || linkHref === "index.html") {
+            linkHref = "index.html";
+        }
   
-      if (linkHref === currentPage) {
-        navLink.classList.remove("unidad"); 
-        navLink.classList.add("active"); 
-      }
+        if (linkHref === currentPage) {
+            navLink.classList.remove("unidad"); 
+            navLink.classList.add("active"); 
+        }
     });
-  });
+});
+
   
