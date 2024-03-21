@@ -55,22 +55,22 @@ class HeaderComponent extends HTMLElement {
   
   customElements.define('footer-component', FooterComponent);
 
-  document.addEventListener("DOMContentLoaded", function() {
-    const currentPage = window.location.pathname.split("/").pop();
-  
-    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
-  
-    navLinks.forEach(function(navLink) {
-      const linkHref = navLink.getAttribute("href").split("/").pop();
-  
-      if (currentPage === "") {
-        navLink.classList.remove("unidad");
-        navLink.classList.add("active");
-      } else if (linkHref === currentPage) {
-        navLink.classList.remove("unidad");
-        navLink.classList.add("active");
-      }
-    });
+document.addEventListener("DOMContentLoaded", function() {
+  const currentPage = window.location.pathname.split("/").pop();
+
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+  navLinks.forEach(function(navLink) {
+    const linkHref = navLink.getAttribute("href").split("/").pop();
+
+    if (currentPage === "" && linkHref === "index.html") {
+      navLink.classList.remove("unidad");
+      navLink.classList.add("active");
+    } else if (linkHref === currentPage) {
+      navLink.classList.remove("unidad");
+      navLink.classList.add("active");
+    }
   });
+});
 
   
